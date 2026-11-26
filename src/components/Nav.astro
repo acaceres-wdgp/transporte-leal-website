@@ -1,17 +1,29 @@
 ---
 import Logo from './Logo.astro';
 import { site } from '../data/site';
+import { href } from '../lib/url';
+
+interface Props {
+  /** Página actual, para marcar su ítem en el menú. */
+  current?: 'inicio' | 'nosotros';
+}
+const { current = 'inicio' } = Astro.props;
+
+// En la portada los enlaces son anclas (scroll suave); desde otras páginas vuelven a la portada.
+const onHome = current === 'inicio';
+const home = (anchor: string) => (onHome ? anchor : href(anchor));
 
 const links = [
-  { href: '#inicio', label: 'Inicio', active: true },
-  { href: '#servicios', label: 'Servicios' },
-  { href: '#nosotros', label: 'Nosotros' },
-  { href: '#empleo', label: 'Empleo' },
+  { href: home('#inicio'), label: 'Inicio', active: current === 'inicio' },
+  { href: home('#servicios'), label: 'Servicios' },
+  { href: href('nosotros/'), label: 'Nosotros', active: current === 'nosotros' },
+  { href: home('#empleo'), label: 'Empleo' },
 ];
+const quoteHref = home('#cotizar');
 ---
 
 <nav class="relative flex items-center justify-between px-4 py-2" aria-label="Principal" data-nav>
-  <a href="#inicio" class="flex items-center gap-3 rounded-pill">
+  <a href={home('#inicio')} class="flex items-center gap-3 rounded-pill">
     <Logo size={44} eager />
     <span class="text-xl font-bold tracking-title">{site.name}</span>
   </a>
@@ -33,7 +45,7 @@ const links = [
   </ul>
 
   <a
-    href="#cotizar"
+    href={quoteHref}
     class="hidden rounded-pill bg-navy px-[22px] py-3.5 text-[15px] font-semibold text-white transition-opacity hover:opacity-90 lg:inline-block"
   >
     Cotizar traslado
@@ -75,7 +87,7 @@ const links = [
       }
     </ul>
     <a
-      href="#cotizar"
+      href={quoteHref}
       class="mt-3 block rounded-pill bg-navy px-[22px] py-3.5 text-center font-semibold text-white"
       data-nav-link
     >

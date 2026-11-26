@@ -1,0 +1,37 @@
+---
+import { Picture } from 'astro:assets';
+import trucks from '../../assets/img/trucks-three.jpg';
+import { site } from '../../data/site';
+---
+
+<!-- Cabecera de Nosotros: misma receta que el hero de la portada (foto + degradado marino + etiqueta), más baja. -->
+<section class="relative h-[460px] overflow-hidden rounded-block md:h-[520px]" aria-labelledby="nosotros-hero-title">
+  <Picture
+    src={trucks}
+    alt=""
+    widths={[640, 960, 1280, 1800]}
+    sizes="(min-width: 1280px) 1240px, calc(100vw - 40px)"
+    formats={['avif', 'webp']}
+    loading="eager"
+    fetchpriority="high"
+    class="absolute inset-0 size-full object-cover object-center"
+    pictureAttributes={{ class: 'contents' }}
+  />
+  <!-- Esta foto es más cargada que la de la portada: degradado marino doble para que el texto se lea. -->
+  <div class="absolute inset-0 bg-linear-to-b from-navy/60 to-navy/10" aria-hidden="true"></div>
+  <div class="absolute inset-0 bg-linear-to-r from-navy/75 via-navy/35 to-navy/0 md:to-70%" aria-hidden="true"></div>
+  <div class="relative flex max-w-[820px] flex-col gap-[22px] px-6 py-10 md:px-14 md:py-16">
+    <p class="self-start rounded-pill bg-white/18 px-4 py-2 text-[13px] font-semibold text-white backdrop-blur-[8px] md:text-sm">
+      Nosotros · Empresa familiar en {site.city}
+    </p>
+    <h1
+      id="nosotros-hero-title"
+      class="text-[44px] leading-[0.98] font-semibold tracking-h1 text-white md:text-[64px] xl:text-[80px]"
+    >
+      Familia Leal, <span class="font-light">desde {site.since}.</span>
+    </h1>
+    <p class="max-w-[560px] text-lg leading-[1.5] font-light text-white md:text-xl">
+      Movemos carga del puerto a la ciudad con equipo propio y trato directo, como el primer día.
+    </p>
+  </div>
+</section>

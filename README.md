@@ -1,6 +1,6 @@
 # Transporte Leal — sitio web
 
-Sitio de una sola página de Transporte Leal (propuesta de diseño 2a "Ruta").
+Sitio de Transporte Leal (propuesta de diseño 2a "Ruta").
 Hecho con [Astro](https://astro.build) (salida 100 % estática) y Tailwind CSS.
 
 ## Requisitos
@@ -43,6 +43,7 @@ BASE_PATH=/demo/ npm run build
 | Quitar el `noindex` al pasar a producción | `src/data/site.ts` → `noindex: false` |
 | Título, descripciones, palabras clave y URL pública (para vistas previas al compartir) | `src/data/site.ts` |
 | Colores, radios y tipografía (tokens) | `src/styles/global.css` (bloque `@theme`) |
+| Textos de la página Nosotros | `src/components/nosotros/` y los compromisos en `src/pages/nosotros.astro` |
 | Envío de formularios (hoy en modo demo) | `src/lib/submitForm.ts` |
 | Validación de formularios y la barra de cotización rápida | `src/scripts/forms.ts` |
 
@@ -57,10 +58,12 @@ Para conectarlos, complete la función `submitForm` (ver el `TODO`).
 src/
   assets/       logo y fotos (Astro las optimiza a AVIF/WebP)
   components/   una pieza por sección (Nav, Hero, Services, Route, About, formularios, Footer)
+    nosotros/   secciones propias de la página Nosotros
+  lib/url.ts    arma enlaces entre páginas respetando BASE_PATH
   data/site.ts  datos del negocio
   layouts/      <head> y estructura base
   lib/          envío de formularios
-  pages/        index.astro
+  pages/        index.astro (portada) y nosotros.astro (/nosotros/)
   scripts/      JS de formularios
   styles/       fuente Sora y tokens de diseño
 public/         favicon

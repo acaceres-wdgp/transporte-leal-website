@@ -1,0 +1,28 @@
+---
+import Logo from '../Logo.astro';
+import { site } from '../../data/site';
+---
+
+<!-- Misma retícula que la Intro de la portada: título a la izquierda, texto en Sora 300 a la derecha. -->
+<section
+  class="grid grid-cols-1 gap-5 px-4 pt-10 pb-2 md:pt-14 lg:grid-cols-[minmax(0,1fr)_minmax(0,2fr)] lg:pt-[60px] lg:pb-5"
+  aria-labelledby="historia-title"
+>
+  <div class="flex flex-col gap-6">
+    <Logo size={88} alt="Sello de Transporte Leal" />
+    <h2 id="historia-title" class="text-4xl leading-[1.02] font-semibold tracking-h2 md:text-[48px]">
+      Un nombre que <span class="text-sky-text">se cumple.</span>
+    </h2>
+  </div>
+  <div class="flex max-w-[620px] flex-col gap-5 text-lg leading-[1.55] font-light text-ink-muted md:text-xl lg:pt-[112px]">
+    <p>
+      {site.name} nació en {site.city} en {site.since} como un negocio de familia, con una idea sencilla: que la carga
+      llegue como se prometió, el día que se prometió.
+    </p>
+    <p>
+      Hoy retiramos contenedores y carga general en el puerto y la llevamos hasta su negocio, pero la forma de
+      trabajar no ha cambiado. El rostro del sello es el de nuestro fundador: cada viaje lleva nuestro nombre, y
+      respondemos personalmente por él.
+    </p>
+  </div>
+</section>
