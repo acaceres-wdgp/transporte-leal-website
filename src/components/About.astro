@@ -3,6 +3,7 @@ import { Picture } from 'astro:assets';
 import trucks from '../assets/img/trucks-three.jpg';
 import Logo from './Logo.astro';
 import { site } from '../data/site';
+import { href } from '../lib/url';
 ---
 
 <section id="nosotros" class="grid grid-cols-1 gap-5 md:grid-cols-2" aria-labelledby="nosotros-title">
@@ -15,6 +16,12 @@ import { site } from '../data/site';
       El rostro del sello es el de nuestro fundador. Somos una empresa familiar y respondemos personalmente por cada
       viaje.
     </p>
+    <a
+      href={href('nosotros/')}
+      class="self-start rounded-pill bg-white px-[22px] py-3.5 text-[15px] font-semibold text-ink transition-opacity hover:opacity-80"
+    >
+      Conozca nuestra historia →
+    </a>
   </div>
   <div class="relative h-[280px] overflow-hidden rounded-block md:h-auto md:min-h-[440px]">
     <Picture

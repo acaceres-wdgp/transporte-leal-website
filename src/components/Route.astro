@@ -1,17 +1,33 @@
 ---
-const steps = [
-  { title: 'Solicitud', text: 'Nos cuenta qué mover. Precio el mismo día.', dot: 'bg-peach' },
-  { title: 'Retiro en muelle', text: 'Coordinamos turno y documentos.', dot: 'bg-sky' },
-  { title: 'En ruta', text: 'Aviso de salida y hora estimada.', dot: 'bg-sky' },
-  { title: 'Entrega', text: 'Descarga y devolución del vacío.', dot: 'bg-white' },
+interface Step {
+  title: string;
+  text: string;
+}
+interface Props {
+  title?: string;
+  /** Hasta 4 pasos. Los puntos van durazno → celeste → celeste → blanco, como en la portada. */
+  steps?: Step[];
+  /** id del título, para que sea único si el bloque se usa en otra página. */
+  titleId?: string;
+}
+
+const defaultSteps: Step[] = [
+  { title: 'Solicitud', text: 'Nos cuenta qué mover. Precio el mismo día.' },
+  { title: 'Retiro en muelle', text: 'Coordinamos turno y documentos.' },
+  { title: 'En ruta', text: 'Aviso de salida y hora estimada.' },
+  { title: 'Entrega', text: 'Descarga y devolución del vacío.' },
 ];
+const { title = 'La ruta de su carga', steps: input = defaultSteps, titleId = 'ruta-title' } = Astro.props;
+
+const dots = ['bg-peach', 'bg-sky', 'bg-sky', 'bg-white'];
+const steps = input.map((s, i) => ({ ...s, dot: i === input.length - 1 ? 'bg-white' : (dots[i] ?? 'bg-sky') }));
 ---
 
 <section
   class="mt-5 flex flex-col gap-10 rounded-block bg-navy px-6 py-10 text-white md:p-12 lg:mt-10 lg:gap-11 lg:p-14"
-  aria-labelledby="ruta-title"
+  aria-labelledby={titleId}
 >
-  <h2 id="ruta-title" class="text-[34px] leading-tight font-semibold tracking-h2 md:text-[44px]">La ruta de su carga</h2>
+  <h2 id={titleId} class="text-[34px] leading-tight font-semibold tracking-h2 md:text-[44px]">{title}</h2>
   <ol class="route">
     {
       steps.map((s) => (

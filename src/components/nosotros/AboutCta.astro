@@ -1,0 +1,36 @@
+---
+import { href } from '../../lib/url';
+import { site } from '../../data/site';
+---
+
+<!-- Cierre: misma proporción que los formularios de la portada (cotizar ancho + empleo celeste). -->
+<section class="grid grid-cols-1 gap-5 lg:grid-cols-[minmax(0,1.3fr)_minmax(0,1fr)]" aria-label="Siguientes pasos">
+  <div class="flex flex-col gap-[18px] rounded-block bg-navy p-6 text-white md:p-10">
+    <h2 class="text-[28px] leading-tight font-semibold tracking-h3 md:text-[32px]">¿Tiene carga que mover?</h2>
+    <p class="text-base leading-normal text-on-navy-muted">
+      Cuéntenos qué necesita trasladar y le damos precio el mismo día.
+    </p>
+    <div class="mt-auto flex flex-wrap items-center gap-x-6 gap-y-4 pt-2">
+      <a
+        href={href('#cotizar')}
+        class="rounded-pill bg-peach px-7 py-4 text-base font-semibold text-ink-dark transition-opacity hover:opacity-90"
+      >
+        Cotizar ahora →
+      </a>
+      <a href={site.phone.href} class="rounded-sm text-base font-semibold text-white hover:text-on-navy-muted">
+        o llame al {site.phone.display}
+      </a>
+    </div>
+  </div>
+
+  <div class="flex flex-col gap-[18px] rounded-block bg-sky p-6 text-ink-darker md:p-10">
+    <h2 class="text-[28px] leading-tight font-semibold tracking-h3 md:text-[32px]">Maneje con nosotros</h2>
+    <p class="text-base leading-normal">Choferes con licencia profesional, ayudantes y operaciones.</p>
+    <a
+      href={href('#empleo')}
+      class="mt-auto self-start rounded-pill bg-ink-darker px-7 py-4 text-base font-semibold text-white transition-opacity hover:opacity-90"
+    >
+      Postular
+    </a>
+  </div>
+</section>

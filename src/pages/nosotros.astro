@@ -1,0 +1,39 @@
+---
+import Base from '../layouts/Base.astro';
+import Nav from '../components/Nav.astro';
+import AboutHero from '../components/nosotros/AboutHero.astro';
+import Story from '../components/nosotros/Story.astro';
+import Values from '../components/nosotros/Values.astro';
+import Route from '../components/Route.astro';
+import Coverage from '../components/nosotros/Coverage.astro';
+import AboutCta from '../components/nosotros/AboutCta.astro';
+import Footer from '../components/Footer.astro';
+import { site } from '../data/site';
+
+const commitments = [
+  { title: 'Precio el mismo día', text: 'Nos cuenta qué mover y le respondemos hoy.' },
+  { title: 'Documentos en orden', text: 'Coordinamos turno y papeles en el muelle.' },
+  { title: 'Avisos en el camino', text: 'Salida, hora estimada y entrega, por WhatsApp.' },
+  { title: 'Ciclo cerrado', text: 'Descargamos y devolvemos el vacío por usted.' },
+];
+---
+
+<Base
+  title={`Nosotros — ${site.name}, empresa familiar desde ${site.since}`}
+  description={`${site.name} es una empresa familiar de ${site.city} que desde ${site.since} mueve contenedores y carga general del puerto a la ciudad, con equipo propio y trato directo.`}
+  shareDescription={`Conozca a la familia Leal: transporte de carga en ${site.city}, ${site.country}, desde ${site.since}.`}
+  path="nosotros/"
+>
+  <div class="mx-auto flex max-w-[1280px] flex-col gap-5 p-5">
+    <Nav current="nosotros" />
+    <main class="flex flex-col gap-5">
+      <AboutHero />
+      <Story />
+      <Values />
+      <Route title="Lo que puede esperar de nosotros" steps={commitments} titleId="compromisos-title" />
+      <Coverage />
+      <AboutCta />
+    </main>
+    <Footer />
+  </div>
+</Base>

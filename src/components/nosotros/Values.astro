@@ -1,0 +1,37 @@
+---
+// Tres tarjetas "mist" como las de Servicios, sin foto: un punto de la ruta encabeza cada una.
+const values = [
+  {
+    title: 'Equipo propio',
+    text: 'Trabajamos con camiones propios. Así controlamos cada tramo del traslado y respondemos por él.',
+    dot: 'bg-peach',
+  },
+  {
+    title: 'Choferes con experiencia',
+    text: 'Conocen el muelle, sus turnos y sus documentos, y las calles de Santiago.',
+    dot: 'bg-sky',
+  },
+  {
+    title: 'Contacto directo',
+    text: 'Usted habla con quien lleva su carga. Le avisamos por WhatsApp en cada paso.',
+    dot: 'bg-navy',
+  },
+];
+---
+
+<section aria-labelledby="valores-title">
+  <h2 id="valores-title" class="sr-only">Cómo trabajamos</h2>
+  <ul class="grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3">
+    {
+      values.map((v, i) => (
+        <li class:list={['flex flex-col gap-5 rounded-card bg-mist p-8', i === 2 && 'md:col-span-2 lg:col-span-1']}>
+          <span class:list={['size-7 rounded-full', v.dot]} aria-hidden="true" />
+          <div class="flex flex-col gap-2.5">
+            <h3 class="text-2xl font-semibold tracking-title">{v.title}</h3>
+            <p class="text-base leading-normal text-ink-muted">{v.text}</p>
+          </div>
+        </li>
+      ))
+    }
+  </ul>
+</section>
