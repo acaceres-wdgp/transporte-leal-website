@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<!--
+  REFERENCIA VISUAL — Propuesta 2a "Ruta, moderno y luminoso" (aprobada por el cliente).
+  Es el mockup de escritorio (1280px) convertido a HTML plano. NO es código de producción:
+  úsalo como fuente de verdad para colores, tamaños, espaciados, textos y orden de secciones.
+-->
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Transporte Leal — Referencia 2a</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;600;700&display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#E7E5E0;-webkit-font-smoothing:antialiased;font-family:'Sora',sans-serif}
+a{color:#232F6B;text-decoration:none}
+input,textarea,select,button{font:inherit}
+*{box-sizing:border-box}
+.page{width:1280px;margin:40px auto}
+</style>
+</head>
+<body>
+<div class="page">
+<div style="background:#fff;box-shadow:0 30px 80px rgba(20,22,31,.18);color:#1B2350;overflow:hidden;padding:20px;display:flex;flex-direction:column;gap:20px">
+
+  <!-- NAV -->
+  <nav style="display:flex;align-items:center;justify-content:space-between;padding:8px 16px">
+    <div style="display:flex;align-items:center;gap:12px">
+      <img src="../src/assets/brand/logo-256.png" alt="" style="width:44px;height:44px">
+      <span style="font-weight:700;font-size:20px;letter-spacing:-.02em">Transporte Leal</span>
+    </div>
+    <div style="display:flex;align-items:center;gap:6px;background:#EEF5FB;border-radius:999px;padding:6px;font-size:15px">
+      <a href="#" style="padding:10px 18px;border-radius:999px;background:#fff">Inicio</a>
+      <a href="#servicios" style="padding:10px 18px">Servicios</a>
+      <a href="#nosotros" style="padding:10px 18px">Nosotros</a>
+      <a href="#empleo" style="padding:10px 18px">Empleo</a>
+    </div>
+    <a href="#cotizar" style="background:#232F6B;color:#fff;padding:14px 22px;border-radius:999px;font-weight:600;font-size:15px">Cotizar traslado</a>
+  </nav>
+
+  <!-- HERO -->
+  <header style="position:relative;height:680px;border-radius:28px;overflow:hidden">
+    <img src="../src/assets/img/containers-sky.jpg" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 40%">
+    <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(35,47,107,.55) 0%,rgba(35,47,107,0) 55%)"></div>
+    <div style="position:relative;padding:64px 56px;display:flex;flex-direction:column;gap:22px;max-width:780px">
+      <div style="align-self:flex-start;background:rgba(255,255,255,.18);backdrop-filter:blur(8px);color:#fff;border-radius:999px;padding:8px 16px;font-size:14px;font-weight:600">Transporte de carga en Santiago · Desde 2009</div>
+      <h1 style="margin:0;font-weight:600;font-size:92px;line-height:.98;letter-spacing:-.045em;color:#fff">Del puerto a su puerta, <span style="font-weight:300">sin desvíos.</span></h1>
+    </div>
+    <!-- Barra de cotización rápida (Origen / Destino / Carga) -->
+    <div style="position:absolute;left:24px;right:24px;bottom:24px;background:#fff;border-radius:22px;padding:22px 24px;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr) minmax(0,1fr) auto;gap:16px;align-items:center">
+      <div style="display:flex;flex-direction:column;gap:4px;padding:0 12px;border-right:1px solid #E3EAF2"><span style="font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:#5EA2CE">Origen</span><span style="font-size:18px;font-weight:600">Muelle / terminal</span></div>
+      <div style="display:flex;flex-direction:column;gap:4px;padding:0 12px;border-right:1px solid #E3EAF2"><span style="font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:#5EA2CE">Destino</span><span style="font-size:18px;font-weight:600;color:#7A84A8">¿A dónde va?</span></div>
+      <div style="display:flex;flex-direction:column;gap:4px;padding:0 12px"><span style="font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:#5EA2CE">Carga</span><span style="font-size:18px;font-weight:600">Contenedor 40'</span></div>
+      <a href="#cotizar" style="background:#F4C673;color:#14161F;padding:18px 28px;border-radius:16px;font-weight:600;font-size:17px">Cotizar ahora →</a>
+    </div>
+  </header>
+
+  <!-- INTRO -->
+  <div style="display:grid;grid-template-columns:minmax(0,1fr) minmax(0,2fr);gap:20px;padding:60px 16px 20px">
+    <h2 style="margin:0;font-weight:600;font-size:48px;line-height:1.02;letter-spacing:-.04em">Un servicio, <span style="color:#5EA2CE">bien hecho.</span></h2>
+    <p style="margin:0;font-size:20px;line-height:1.55;color:#4A5078;font-weight:300;max-width:620px">Nos especializamos en mover carga portuaria hacia la ciudad. Equipo propio, choferes con experiencia y un contacto directo con quien lleva su carga.</p>
+  </div>
+
+  <!-- SERVICIOS -->
+  <div id="servicios" style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px">
+    <div style="background:#EEF5FB;border-radius:24px;padding:12px;display:flex;flex-direction:column;gap:20px">
+      <div style="height:240px;border-radius:16px;overflow:hidden"><img src="../src/assets/img/containers-stack.jpg" alt="" style="width:100%;height:100%;object-fit:cover"></div>
+      <div style="padding:0 16px 20px;display:flex;flex-direction:column;gap:10px"><span style="font-weight:600;font-size:24px;letter-spacing:-.02em">Contenedores</span><span style="font-size:16px;line-height:1.5;color:#4A5078">20' y 40'. Retiro en muelle y devolución del vacío.</span></div>
+    </div>
+    <div style="background:#EEF5FB;border-radius:24px;padding:12px;display:flex;flex-direction:column;gap:20px">
+      <div style="height:240px;border-radius:16px;overflow:hidden"><img src="../src/assets/img/port-aerial.jpg" alt="" style="width:100%;height:100%;object-fit:cover"></div>
+      <div style="padding:0 16px 20px;display:flex;flex-direction:column;gap:10px"><span style="font-weight:600;font-size:24px;letter-spacing:-.02em">Carga general</span><span style="font-size:16px;line-height:1.5;color:#4A5078">Paletizada o suelta, desde bodegas portuarias.</span></div>
+    </div>
+    <div style="background:#EEF5FB;border-radius:24px;padding:12px;display:flex;flex-direction:column;gap:20px">
+      <div style="height:240px;border-radius:16px;overflow:hidden"><img src="../src/assets/img/trucks-freeway.jpg" alt="" style="width:100%;height:100%;object-fit:cover"></div>
+      <div style="padding:0 16px 20px;display:flex;flex-direction:column;gap:10px"><span style="font-weight:600;font-size:24px;letter-spacing:-.02em">Reparto en Santiago</span><span style="font-size:16px;line-height:1.5;color:#4A5078">Varias paradas por día, con aviso por WhatsApp.</span></div>
+    </div>
+  </div>
+
+  <!-- LA RUTA (proceso) -->
+  <div style="background:#232F6B;border-radius:28px;padding:56px;display:flex;flex-direction:column;gap:44px;color:#fff;margin-top:40px">
+    <h2 style="margin:0;font-weight:600;font-size:44px;letter-spacing:-.04em">La ruta de su carga</h2>
+    <div style="position:relative;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:24px">
+      <div style="position:absolute;left:14px;right:14px;top:13px;border-top:2px dashed #5EA2CE"></div>
+      <div style="position:relative;display:flex;flex-direction:column;gap:14px"><span style="width:28px;height:28px;border-radius:50%;background:#F4C673;border:6px solid #232F6B;box-sizing:content-box;margin:-6px"></span><span style="font-weight:600;font-size:22px">Solicitud</span><span style="font-size:15px;line-height:1.5;color:#C9D2EA">Nos cuenta qué mover. Precio el mismo día.</span></div>
+      <div style="position:relative;display:flex;flex-direction:column;gap:14px"><span style="width:28px;height:28px;border-radius:50%;background:#5EA2CE;border:6px solid #232F6B;box-sizing:content-box;margin:-6px"></span><span style="font-weight:600;font-size:22px">Retiro en muelle</span><span style="font-size:15px;line-height:1.5;color:#C9D2EA">Coordinamos turno y documentos.</span></div>
+      <div style="position:relative;display:flex;flex-direction:column;gap:14px"><span style="width:28px;height:28px;border-radius:50%;background:#5EA2CE;border:6px solid #232F6B;box-sizing:content-box;margin:-6px"></span><span style="font-weight:600;font-size:22px">En ruta</span><span style="font-size:15px;line-height:1.5;color:#C9D2EA">Aviso de salida y hora estimada.</span></div>
+      <div style="position:relative;display:flex;flex-direction:column;gap:14px"><span style="width:28px;height:28px;border-radius:50%;background:#fff;border:6px solid #232F6B;box-sizing:content-box;margin:-6px"></span><span style="font-weight:600;font-size:22px">Entrega</span><span style="font-size:15px;line-height:1.5;color:#C9D2EA">Descarga y devolución del vacío.</span></div>
+    </div>
+  </div>
+
+  <!-- NOSOTROS -->
+  <div id="nosotros" style="display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:20px">
+    <div style="background:#EEF5FB;border-radius:28px;padding:48px;display:flex;flex-direction:column;gap:20px;justify-content:center">
+      <img src="../src/assets/brand/logo-256.png" alt="Sello de Transporte Leal" style="width:88px;height:88px">
+      <h2 style="margin:0;font-weight:600;font-size:40px;line-height:1.05;letter-spacing:-.04em">Familia Leal, <span style="font-weight:300">desde 2009.</span></h2>
+      <p style="margin:0;font-size:17px;line-height:1.6;color:#4A5078">El rostro del sello es el de nuestro fundador. Somos una empresa familiar y respondemos personalmente por cada viaje.</p>
+    </div>
+    <div style="border-radius:28px;overflow:hidden;min-height:440px"><img src="../src/assets/img/trucks-three.jpg" alt="" style="width:100%;height:100%;object-fit:cover"></div>
+  </div>
+
+  <!-- FORMULARIOS -->
+  <div style="display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:20px">
+    <form id="cotizar" style="border:1px solid #E3EAF2;border-radius:28px;padding:40px;display:flex;flex-direction:column;gap:18px">
+      <span style="font-weight:600;font-size:32px;letter-spacing:-.03em">Cotice su traslado</span>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
+        <input placeholder="Nombre" style="border:0;border-radius:14px;padding:16px;font-size:16px;background:#EEF5FB">
+        <input placeholder="Empresa" style="border:0;border-radius:14px;padding:16px;font-size:16px;background:#EEF5FB">
+        <input placeholder="Teléfono / WhatsApp" style="border:0;border-radius:14px;padding:16px;font-size:16px;background:#EEF5FB">
+        <select style="border:0;border-radius:14px;padding:16px;font-size:16px;background:#EEF5FB"><option>Contenedor 20'</option><option>Contenedor 40'</option><option>Carga general</option></select>
+        <input placeholder="Origen" style="border:0;border-radius:14px;padding:16px;font-size:16px;background:#EEF5FB">
+        <input placeholder="Destino" style="border:0;border-radius:14px;padding:16px;font-size:16px;background:#EEF5FB">
+      </div>
+      <button type="submit" style="align-self:flex-start;background:#232F6B;color:#fff;border:0;border-radius:999px;padding:16px 28px;font-weight:600;font-size:16px;cursor:pointer">Enviar solicitud</button>
+      <!-- Estado de éxito: <div style="background:#EEF5FB;border-radius:14px;padding:16px;font-weight:600;color:#232F6B">Recibido. Le contactamos hoy mismo.</div> -->
+    </form>
+    <form id="empleo" style="background:#5EA2CE;border-radius:28px;padding:40px;display:flex;flex-direction:column;gap:18px;color:#0E1020">
+      <span style="font-weight:600;font-size:32px;letter-spacing:-.03em">Maneje con nosotros</span>
+      <p style="margin:0;font-size:16px;line-height:1.5">Choferes con licencia profesional, ayudantes y operaciones.</p>
+      <input placeholder="Nombre completo" style="border:0;border-radius:14px;padding:16px;font-size:16px;background:#fff">
+      <input placeholder="Teléfono" style="border:0;border-radius:14px;padding:16px;font-size:16px;background:#fff">
+      <select style="border:0;border-radius:14px;padding:16px;font-size:16px;background:#fff"><option>Chofer</option><option>Ayudante</option><option>Operaciones</option></select>
+      <button type="submit" style="align-self:flex-start;background:#0E1020;color:#fff;border:0;border-radius:999px;padding:16px 28px;font-weight:600;font-size:16px;cursor:pointer">Postular</button>
+      <!-- Estado de éxito: <div style="background:#fff;border-radius:14px;padding:16px;font-weight:600">Postulación recibida. ¡Gracias!</div> -->
+    </form>
+  </div>
+
+  <!-- FOOTER -->
+  <footer style="display:flex;justify-content:space-between;align-items:center;padding:20px 16px 8px;font-size:14px;color:#4A5078">
+    <div style="display:flex;align-items:center;gap:10px"><img src="../src/assets/brand/logo-256.png" alt="" style="width:32px;height:32px"><span style="font-weight:600;color:#1B2350">Transporte Leal</span></div>
+    <span><a href="tel:+18095766705" style="color:#4A5078">(809) 576-6705</a> · Santiago</span>
+    <span>© 2026</span>
+  </footer>
+</div>
+</div>
+</body>
+</html>

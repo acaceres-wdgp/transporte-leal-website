@@ -1,0 +1,30 @@
+---
+import { Picture } from 'astro:assets';
+import trucks from '../assets/img/trucks-three.jpg';
+import Logo from './Logo.astro';
+import { site } from '../data/site';
+---
+
+<section id="nosotros" class="grid grid-cols-1 gap-5 md:grid-cols-2" aria-labelledby="nosotros-title">
+  <div class="flex flex-col justify-center gap-5 rounded-block bg-mist p-8 md:p-10 lg:p-12">
+    <Logo size={88} alt="Sello de Transporte Leal" />
+    <h2 id="nosotros-title" class="text-[34px] leading-[1.05] font-semibold tracking-h2 lg:text-[40px]">
+      Familia Leal, <span class="font-light">desde {site.since}.</span>
+    </h2>
+    <p class="text-[17px] leading-[1.6] text-ink-muted">
+      El rostro del sello es el de nuestro fundador. Somos una empresa familiar y respondemos personalmente por cada
+      viaje.
+    </p>
+  </div>
+  <div class="relative h-[280px] overflow-hidden rounded-block md:h-auto md:min-h-[440px]">
+    <Picture
+      src={trucks}
+      alt=""
+      widths={[480, 720, 960, 1280]}
+      sizes="(min-width: 1280px) 610px, (min-width: 768px) 50vw, 100vw"
+      formats={['avif', 'webp']}
+      class="absolute inset-0 size-full object-cover"
+      pictureAttributes={{ class: 'contents' }}
+    />
+  </div>
+</section>

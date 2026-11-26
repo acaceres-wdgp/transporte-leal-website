@@ -1,0 +1,119 @@
+---
+import Logo from './Logo.astro';
+import { site } from '../data/site';
+
+const links = [
+  { href: '#inicio', label: 'Inicio', active: true },
+  { href: '#servicios', label: 'Servicios' },
+  { href: '#nosotros', label: 'Nosotros' },
+  { href: '#empleo', label: 'Empleo' },
+];
+---
+
+<nav class="relative flex items-center justify-between px-4 py-2" aria-label="Principal" data-nav>
+  <a href="#inicio" class="flex items-center gap-3 rounded-pill">
+    <Logo size={44} eager />
+    <span class="text-xl font-bold tracking-title">{site.name}</span>
+  </a>
+
+  <ul class="hidden items-center gap-1.5 rounded-pill bg-mist p-1.5 text-[15px] lg:flex">
+    {
+      links.map((l) => (
+        <li>
+          <a
+            href={l.href}
+            class:list={['block rounded-pill px-[18px] py-2.5 transition-colors hover:bg-white/70', l.active && 'bg-white hover:bg-white']}
+            aria-current={l.active ? 'page' : undefined}
+          >
+            {l.label}
+          </a>
+        </li>
+      ))
+    }
+  </ul>
+
+  <a
+    href="#cotizar"
+    class="hidden rounded-pill bg-navy px-[22px] py-3.5 text-[15px] font-semibold text-white transition-opacity hover:opacity-90 lg:inline-block"
+  >
+    Cotizar traslado
+  </a>
+
+  <button
+    type="button"
+    class="inline-flex size-12 items-center justify-center rounded-pill bg-mist lg:hidden"
+    aria-expanded="false"
+    aria-controls="menu-movil"
+    data-nav-toggle
+  >
+    <span class="sr-only" data-nav-label>Abrir menú</span>
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+      <path data-icon-open d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path>
+      <path data-icon-close class="hidden" d="M6 6l12 12M18 6 6 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path>
+    </svg>
+  </button>
+
+  <div
+    id="menu-movil"
+    class="absolute inset-x-0 top-full z-30 mt-2 hidden rounded-card bg-mist p-3 shadow-[0_20px_40px_rgba(27,35,80,0.18)] lg:hidden"
+    data-nav-panel
+  >
+    <ul class="flex flex-col gap-1 text-lg">
+      {
+        links.map((l) => (
+          <li>
+            <a
+              href={l.href}
+              class:list={['block rounded-input px-4 py-3', l.active && 'bg-white']}
+              aria-current={l.active ? 'page' : undefined}
+              data-nav-link
+            >
+              {l.label}
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+    <a
+      href="#cotizar"
+      class="mt-3 block rounded-pill bg-navy px-[22px] py-3.5 text-center font-semibold text-white"
+      data-nav-link
+    >
+      Cotizar traslado
+    </a>
+  </div>
+</nav>
+
+<script>
+  const nav = document.querySelector<HTMLElement>('[data-nav]');
+  const toggle = nav?.querySelector<HTMLButtonElement>('[data-nav-toggle]');
+  const panel = nav?.querySelector<HTMLElement>('[data-nav-panel]');
+
+  if (nav && toggle && panel) {
+    const label = toggle.querySelector('[data-nav-label]');
+    const iconOpen = toggle.querySelector('[data-icon-open]');
+    const iconClose = toggle.querySelector('[data-icon-close]');
+
+    const setOpen = (open: boolean, returnFocus = false) => {
+      toggle.setAttribute('aria-expanded', String(open));
+      panel.classList.toggle('hidden', !open);
+      iconOpen?.classList.toggle('hidden', open);
+      iconClose?.classList.toggle('hidden', !open);
+      if (label) label.textContent = open ? 'Cerrar menú' : 'Abrir menú';
+      if (open) panel.querySelector<HTMLElement>('a')?.focus();
+      else if (returnFocus) toggle.focus();
+    };
+
+    toggle.addEventListener('click', () => setOpen(toggle.getAttribute('aria-expanded') !== 'true'));
+    panel.querySelectorAll('[data-nav-link]').forEach((a) => a.addEventListener('click', () => setOpen(false)));
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && toggle.getAttribute('aria-expanded') === 'true') setOpen(false, true);
+    });
+    document.addEventListener('click', (e) => {
+      if (toggle.getAttribute('aria-expanded') === 'true' && !nav.contains(e.target as Node)) setOpen(false);
+    });
+    window.matchMedia('(min-width: 1024px)').addEventListener('change', (e) => {
+      if (e.matches) setOpen(false);
+    });
+  }
+</script>

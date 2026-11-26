@@ -1,0 +1,38 @@
+---
+import { Picture } from 'astro:assets';
+import heroImg from '../assets/img/containers-sky.jpg';
+import QuickQuote from './QuickQuote.astro';
+import { site } from '../data/site';
+---
+
+<section id="inicio" class="relative flex flex-col gap-5 md:block" aria-labelledby="hero-title">
+  <div class="relative h-[560px] overflow-hidden rounded-block md:h-[640px] lg:h-[680px]">
+    <Picture
+      src={heroImg}
+      alt=""
+      widths={[640, 960, 1280, 1800]}
+      sizes="(min-width: 1280px) 1240px, calc(100vw - 40px)"
+      formats={['avif', 'webp']}
+      loading="eager"
+      fetchpriority="high"
+      class="absolute inset-0 size-full object-cover object-[center_40%]"
+      pictureAttributes={{ class: 'contents' }}
+    />
+    <div class="absolute inset-0 bg-linear-to-b from-navy/55 to-navy/0 to-55%" aria-hidden="true"></div>
+    <div class="relative flex max-w-[780px] flex-col gap-[22px] px-6 py-10 md:px-14 md:py-16">
+      <p
+        class="self-start rounded-pill bg-white/18 px-4 py-2 text-[13px] font-semibold md:text-sm text-white backdrop-blur-[8px]"
+      >
+        Transporte de carga en {site.city} · Desde {site.since}
+      </p>
+      <h1
+        id="hero-title"
+        class="text-[44px] leading-[0.98] font-semibold tracking-h1 text-white md:text-[64px] xl:text-[92px]"
+      >
+        Del puerto a su puerta, <span class="font-light">sin desvíos.</span>
+      </h1>
+    </div>
+  </div>
+
+  <QuickQuote class="md:absolute md:inset-x-6 md:bottom-6" />
+</section>

@@ -1,0 +1,24 @@
+---
+import { Picture } from 'astro:assets';
+import logo from '../assets/brand/logo-256.png';
+
+interface Props {
+  size: number;
+  alt?: string;
+  class?: string;
+  eager?: boolean;
+}
+const { size, alt = '', class: className, eager = false } = Astro.props;
+---
+
+<Picture
+  src={logo}
+  alt={alt}
+  width={size}
+  height={size}
+  densities={[1, 2]}
+  formats={['webp']}
+  fallbackFormat="png"
+  loading={eager ? 'eager' : 'lazy'}
+  class:list={['shrink-0 object-contain', className]}
+/>

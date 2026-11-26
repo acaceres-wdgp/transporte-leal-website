@@ -1,0 +1,60 @@
+---
+import { cargoOptions } from '../data/site';
+const f = 'field bg-mist';
+---
+
+<form
+  id="cotizar"
+  class="flex flex-col gap-[18px] rounded-block border border-line p-6 md:p-10"
+  novalidate
+  aria-labelledby="cotizar-title"
+  data-form="cotizacion"
+  data-success="Recibido. Le contactamos hoy mismo."
+>
+  <h2 id="cotizar-title" class="text-[28px] leading-tight font-semibold tracking-h3 md:text-[32px]">Cotice su traslado</h2>
+  <div class="grid grid-cols-1 gap-3 sm:grid-cols-2">
+    <div>
+      <label for="q-nombre" class="sr-only">Nombre</label>
+      <input id="q-nombre" name="nombre" class={f} placeholder="Nombre" autocomplete="name" required />
+    </div>
+    <div>
+      <label for="q-empresa" class="sr-only">Empresa (opcional)</label>
+      <input id="q-empresa" name="empresa" class={f} placeholder="Empresa" autocomplete="organization" />
+    </div>
+    <div>
+      <label for="q-telefono" class="sr-only">Teléfono / WhatsApp</label>
+      <input
+        id="q-telefono"
+        name="telefono"
+        type="tel"
+        class={f}
+        placeholder="Teléfono / WhatsApp"
+        autocomplete="tel"
+        inputmode="tel"
+        required
+        data-phone
+      />
+    </div>
+    <div>
+      <label for="q-carga" class="sr-only">Tipo de carga</label>
+      <select id="q-carga" name="carga" class={f} required>
+        {cargoOptions.map((o) => <option value={o}>{o}</option>)}
+      </select>
+    </div>
+    <div>
+      <label for="q-origen" class="sr-only">Origen</label>
+      <input id="q-origen" name="origen" class={f} placeholder="Origen" required />
+    </div>
+    <div>
+      <label for="q-destino" class="sr-only">Destino</label>
+      <input id="q-destino" name="destino" class={f} placeholder="Destino" required />
+    </div>
+  </div>
+  <button
+    type="submit"
+    class="self-start rounded-pill bg-navy px-7 py-4 text-base font-semibold text-white transition-opacity hover:opacity-90 disabled:opacity-60"
+  >
+    Enviar solicitud
+  </button>
+  <p class="hidden rounded-input bg-mist p-4 font-semibold text-navy" role="status" data-form-success></p>
+</form>

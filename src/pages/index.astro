@@ -1,0 +1,34 @@
+---
+import Base from '../layouts/Base.astro';
+import Nav from '../components/Nav.astro';
+import Hero from '../components/Hero.astro';
+import Intro from '../components/Intro.astro';
+import Services from '../components/Services.astro';
+import Route from '../components/Route.astro';
+import About from '../components/About.astro';
+import QuoteForm from '../components/QuoteForm.astro';
+import JobForm from '../components/JobForm.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<Base>
+  <div class="mx-auto flex max-w-[1280px] flex-col gap-5 p-5">
+    <Nav />
+    <main class="flex flex-col gap-5">
+      <Hero />
+      <Intro />
+      <Services />
+      <Route />
+      <About />
+      <div class="grid grid-cols-1 gap-5 lg:grid-cols-[minmax(0,1.3fr)_minmax(0,1fr)]">
+        <QuoteForm />
+        <JobForm />
+      </div>
+    </main>
+    <Footer />
+  </div>
+</Base>
+
+<script>
+  import '../scripts/forms';
+</script>

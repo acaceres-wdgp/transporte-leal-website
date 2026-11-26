@@ -1,0 +1,15 @@
+---
+import { site } from '../data/site';
+---
+
+<section
+  class="grid grid-cols-1 gap-5 px-4 pt-10 pb-2 md:pt-14 lg:grid-cols-[minmax(0,1fr)_minmax(0,2fr)] lg:pt-[60px] lg:pb-5"
+  aria-labelledby="intro-title"
+>
+  <h2 id="intro-title" class="text-4xl leading-[1.02] font-semibold tracking-h2 md:text-[48px]">
+    Un servicio, <span class="text-sky-text">bien hecho.</span>
+  </h2>
+  <p class="max-w-[620px] text-lg leading-[1.55] font-light text-ink-muted md:text-xl">
+    {site.description}
+  </p>
+</section>

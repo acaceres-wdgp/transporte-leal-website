@@ -1,0 +1,29 @@
+---
+import Logo from './Logo.astro';
+import { site } from '../data/site';
+const year = new Date().getFullYear();
+---
+
+<footer
+  class="flex flex-col items-center gap-4 px-4 pt-5 pb-2 text-center text-sm text-ink-muted md:flex-row md:justify-between md:text-left"
+>
+  <div class="flex items-center gap-2.5">
+    <Logo size={32} />
+    <span class="font-semibold text-ink">{site.name}</span>
+  </div>
+  <p>
+    <a href={site.phone.href} class="rounded-sm hover:text-ink">{site.phone.display}</a>
+    {
+      site.email && (
+        <>
+          {' · '}
+          <a href={`mailto:${site.email}`} class="rounded-sm hover:text-ink">
+            {site.email}
+          </a>
+        </>
+      )
+    }
+    {' · '}{site.city}
+  </p>
+  <p>© {year}</p>
+</footer>

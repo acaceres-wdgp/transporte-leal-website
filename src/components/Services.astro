@@ -1,0 +1,37 @@
+---
+import { Picture } from 'astro:assets';
+import containers from '../assets/img/containers-stack.jpg';
+import port from '../assets/img/port-aerial.jpg';
+import trucks from '../assets/img/trucks-freeway.jpg';
+
+const services = [
+  { img: containers, title: 'Contenedores', text: "20' y 40'. Retiro en muelle y devolución del vacío." },
+  { img: port, title: 'Carga general', text: 'Paletizada o suelta, desde bodegas portuarias.' },
+  { img: trucks, title: 'Reparto en Santiago', text: 'Varias paradas por día, con aviso por WhatsApp.' },
+];
+---
+
+<section id="servicios" aria-labelledby="intro-title">
+  <ul class="grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3">
+    {
+      services.map((s, i) => (
+        <li class:list={['flex flex-col gap-5 rounded-card bg-mist p-3', i === 2 && 'md:col-span-2 lg:col-span-1']}>
+          <div class="h-60 overflow-hidden rounded-media">
+            <Picture
+              src={s.img}
+              alt=""
+              widths={[400, 640, 960, 1280]}
+              sizes="(min-width: 1280px) 390px, (min-width: 1024px) 31vw, (min-width: 768px) 50vw, 100vw"
+              formats={['avif', 'webp']}
+              class="size-full object-cover"
+            />
+          </div>
+          <div class="flex flex-col gap-2.5 px-4 pb-5">
+            <h3 class="text-2xl font-semibold tracking-title">{s.title}</h3>
+            <p class="text-base leading-normal text-ink-muted">{s.text}</p>
+          </div>
+        </li>
+      ))
+    }
+  </ul>
+</section>

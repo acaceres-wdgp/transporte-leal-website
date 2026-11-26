@@ -1,0 +1,109 @@
+---
+const steps = [
+  { title: 'Solicitud', text: 'Nos cuenta qué mover. Precio el mismo día.', dot: 'bg-peach' },
+  { title: 'Retiro en muelle', text: 'Coordinamos turno y documentos.', dot: 'bg-sky' },
+  { title: 'En ruta', text: 'Aviso de salida y hora estimada.', dot: 'bg-sky' },
+  { title: 'Entrega', text: 'Descarga y devolución del vacío.', dot: 'bg-white' },
+];
+---
+
+<section
+  class="mt-5 flex flex-col gap-10 rounded-block bg-navy px-6 py-10 text-white md:p-12 lg:mt-10 lg:gap-11 lg:p-14"
+  aria-labelledby="ruta-title"
+>
+  <h2 id="ruta-title" class="text-[34px] leading-tight font-semibold tracking-h2 md:text-[44px]">La ruta de su carga</h2>
+  <ol class="route">
+    {
+      steps.map((s) => (
+        <li class="route-step">
+          <span class:list={['route-dot', s.dot]} aria-hidden="true" />
+          <div class="flex flex-col gap-3.5">
+            <h3 class="text-[22px] leading-tight font-semibold">{s.title}</h3>
+            <p class="text-[15px] leading-normal text-on-navy-muted">{s.text}</p>
+          </div>
+        </li>
+      ))
+    }
+  </ol>
+</section>
+
+<style>
+  /* Línea punteada celeste que une los pasos (puerto → ciudad). */
+  .route {
+    --gap: 24px;
+    --dot: 28px;
+    --ring: 6px;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    row-gap: 32px;
+  }
+  .route-step {
+    position: relative;
+    display: grid;
+    grid-template-columns: var(--dot) minmax(0, 1fr);
+    column-gap: 18px;
+    align-items: start;
+    align-content: start;
+  }
+  .route-dot {
+    position: relative;
+    z-index: 1;
+    width: var(--dot);
+    height: var(--dot);
+    border-radius: 50%;
+    border: var(--ring) solid var(--color-navy);
+    box-sizing: content-box;
+    margin: calc(var(--ring) * -1);
+  }
+  /* Móvil: línea vertical a la izquierda. */
+  .route-step::before {
+    content: '';
+    position: absolute;
+    left: calc(var(--dot) / 2 - 1px);
+    top: calc(var(--dot) / 2);
+    bottom: -32px;
+    border-left: 2px dashed var(--color-sky);
+  }
+  .route-step:last-child::before {
+    display: none;
+  }
+
+  /* Tablet: 2 × 2, una línea horizontal por fila. */
+  @media (min-width: 768px) {
+    .route {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      column-gap: var(--gap);
+      row-gap: 40px;
+    }
+    .route-step {
+      grid-template-columns: minmax(0, 1fr);
+      row-gap: 14px;
+    }
+    .route-step::before,
+    .route-step:last-child::before {
+      display: block;
+      left: calc(var(--dot) / 2);
+      top: calc(var(--dot) / 2 - 1px);
+      bottom: auto;
+      right: calc(var(--gap) * -1);
+      border-left: 0;
+      border-top: 2px dashed var(--color-sky);
+    }
+    .route-step:nth-child(2n)::before {
+      right: calc(var(--dot) / 2);
+    }
+  }
+
+  /* Escritorio: los 4 pasos en una sola fila, como en la referencia. */
+  @media (min-width: 1024px) {
+    .route {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+    .route-step:nth-child(2n)::before {
+      right: calc(var(--gap) * -1);
+    }
+    .route-step:last-child::before {
+      right: calc(var(--dot) / 2);
+    }
+  }
+</style>

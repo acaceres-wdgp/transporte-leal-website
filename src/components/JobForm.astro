@@ -1,0 +1,47 @@
+---
+import { jobOptions } from '../data/site';
+const f = 'field bg-white';
+---
+
+<form
+  id="empleo"
+  class="flex flex-col gap-[18px] rounded-block bg-sky p-6 text-ink-darker [--field-error:var(--color-ink-darker)] md:p-10"
+  novalidate
+  aria-labelledby="empleo-title"
+  data-form="empleo"
+  data-success="Postulación recibida. ¡Gracias!"
+>
+  <h2 id="empleo-title" class="text-[28px] leading-tight font-semibold tracking-h3 md:text-[32px]">Maneje con nosotros</h2>
+  <p class="text-base leading-normal">Choferes con licencia profesional, ayudantes y operaciones.</p>
+  <div>
+    <label for="e-nombre" class="sr-only">Nombre completo</label>
+    <input id="e-nombre" name="nombre" class={f} placeholder="Nombre completo" autocomplete="name" required />
+  </div>
+  <div>
+    <label for="e-telefono" class="sr-only">Teléfono</label>
+    <input
+      id="e-telefono"
+      name="telefono"
+      type="tel"
+      class={f}
+      placeholder="Teléfono"
+      autocomplete="tel"
+      inputmode="tel"
+      required
+      data-phone
+    />
+  </div>
+  <div>
+    <label for="e-cargo" class="sr-only">Cargo</label>
+    <select id="e-cargo" name="cargo" class={f} required>
+      {jobOptions.map((o) => <option value={o}>{o}</option>)}
+    </select>
+  </div>
+  <button
+    type="submit"
+    class="self-start rounded-pill bg-ink-darker px-7 py-4 text-base font-semibold text-white transition-opacity hover:opacity-90 disabled:opacity-60"
+  >
+    Postular
+  </button>
+  <p class="hidden rounded-input bg-white p-4 font-semibold" role="status" data-form-success></p>
+</form>
