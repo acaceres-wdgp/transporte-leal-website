@@ -5,7 +5,7 @@ Hecho con [Astro](https://astro.build) (salida 100 % estática) y Tailwind CSS.
 
 ## Requisitos
 
-- Node.js **22.23.4 o superior** (`node -v` para revisar)
+- Node.js **22.12 o superior** (`node -v` para revisar)
 
 ## Correr en local
 
