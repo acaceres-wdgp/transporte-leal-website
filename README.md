@@ -41,7 +41,7 @@ BASE_PATH=/demo/ npm run build
 |---|---|
 | Nombre, ciudad, teléfono, correo, año de fundación | `src/data/site.ts` |
 | Quitar el `noindex` al pasar a producción | `src/data/site.ts` → `noindex: false` |
-| Título y meta description | `src/data/site.ts` |
+| Título, descripciones, palabras clave y URL pública (para vistas previas al compartir) | `src/data/site.ts` |
 | Colores, radios y tipografía (tokens) | `src/styles/global.css` (bloque `@theme`) |
 | Envío de formularios (hoy en modo demo) | `src/lib/submitForm.ts` |
 | Validación de formularios y la barra de cotización rápida | `src/scripts/forms.ts` |

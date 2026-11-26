@@ -1,9 +1,19 @@
 ---
 import '../styles/global.css';
+import { getImage } from 'astro:assets';
+import shareSrc from '../assets/img/containers-sky.jpg';
 import { site } from '../data/site';
 
 const base = import.meta.env.BASE_URL;
-const favicon = `${base.endsWith('/') ? base : base + '/'}favicon.png`;
+const withBase = (path: string) => `${base.endsWith('/') ? base : base + '/'}${path}`;
+const absolute = (path: string) => new URL(path, site.url).href;
+
+const favicon = withBase('favicon.png');
+const canonical = absolute(withBase(''));
+
+// Imagen para vistas previas al compartir (1200 × 630).
+const share = await getImage({ src: shareSrc, width: 1200, height: 630, fit: 'cover', format: 'jpg', quality: 80 });
+const shareImage = absolute(share.src);
 ---
 
 <!doctype html>
@@ -13,9 +23,35 @@ const favicon = `${base.endsWith('/') ? base : base + '/'}favicon.png`;
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{site.title}</title>
     <meta name="description" content={site.description} />
+    <meta name="keywords" content={site.keywords.join(', ')} />
+    <meta name="author" content={site.name} />
     {site.noindex && <meta name="robots" content="noindex, nofollow" />}
+    <link rel="canonical" href={canonical} />
     <meta name="theme-color" content="#232F6B" />
     <link rel="icon" type="image/png" href={favicon} />
+    <link rel="apple-touch-icon" href={favicon} />
+
+    <!-- Ubicación -->
+    <meta name="geo.region" content="DO-25" />
+    <meta name="geo.placename" content={`${site.city}, ${site.country}`} />
+
+    <!-- Vista previa al compartir (Open Graph: WhatsApp, Facebook, LinkedIn) -->
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="es_DO" />
+    <meta property="og:site_name" content={site.name} />
+    <meta property="og:title" content={site.title} />
+    <meta property="og:description" content={site.shareDescription} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={shareImage} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Contenedores apilados en el puerto bajo el cielo azul" />
+
+    <!-- Vista previa en X / Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={site.title} />
+    <meta name="twitter:description" content={site.shareDescription} />
+    <meta name="twitter:image" content={shareImage} />
   </head>
   <body>
     <slot />
